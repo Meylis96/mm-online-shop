@@ -1,0 +1,36 @@
+.button{
+   &__header{
+        margin-left: 110px;
+        width: 120px;
+        height: 40px;
+        background: #005BFF;
+        border-radius: 3px;
+        outline: none;
+        border: none;
+        padding: 10px;
+        cursor: pointer;
+        transition: 0.2s all;
+        &:hover{
+            background: #0443B5;
+        }
+    }
+    &__search{
+        width: 63px;
+        height: 40px;
+        background: #005BFF;
+        border-radius: 0px 3px 3px 0px;
+        margin-left: 0;
+        border-radius: 3px;
+        outline: none;
+        border: none;
+        cursor: pointer;
+        color: white;
+        font-weight: 500;
+        position: absolute;
+        right: 2px;
+        transition: 0.2s all;
+        &:hover{
+            background: #0443B5;
+        }
+    }
+}
