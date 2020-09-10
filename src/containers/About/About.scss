@@ -1,0 +1,27 @@
+.about{
+    min-height: 600px;
+    &__title{
+        padding-top: 20px;
+        font-weight: bold;
+        font-size: 16px;
+        line-height: 20px;
+        color: #005BFF;
+    }
+    &__subtitle{
+        margin-top: 20px;
+        width: 515px;
+        font-weight: 600;
+        font-size: 36px;
+        line-height: 44px;
+        color: #000000;
+    }
+    &__info{
+        margin-top: 20px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+    }
+    &__img{
+        margin-right: 30px;
+    }
+}

@@ -1,34 +1,38 @@
-import React  from 'react';
+import React, { Component }  from 'react';
 import './Menu.scss';
+import {NavLink} from 'react-router-dom';
 
-const Menu = props =>{   
 
-    const cls = [
-        'menu'
-    ];
-
-    if(props.isOpen){
-        cls.push('open_menu');
-    } else {
-        cls.push('');
+class MenuElems extends Component{
+    clickHandler = () => {
+        this.props.onClose();
     }
+
+    render(){
+        const cls = [
+            'menu'
+        ];
     
-    return(
-        <>
-        <div className={cls.join(' ')}>
+        if(this.props.isOpen){
+            cls.push('open_menu');
+        } else {
+            cls.push('');
+        }
+        return(
+            <div className={cls.join(' ')}>
             <div className="container">
                 <div className="menu__container">
                     <ul className="menu__items">
-                        <li className="menu__item"><a href="#">Главная</a></li>
-                        <li className="menu__item"><a href="">О Нас</a></li>
-                        <li className="menu__item"><a href="">Доставка и оплата</a></li>
-                        <li className="menu__item"><a href="">Контакты</a></li>
+                        <li className="menu__item"><NavLink to="/"  onClick={this.clickHandler}>Главная</NavLink></li>
+                        <li className="menu__item"><NavLink to="/about" onClick={this.clickHandler}>О Нас</NavLink></li>
+                        <li className="menu__item"><NavLink to="/delivery" onClick={this.clickHandler}>Доставка и оплата</NavLink></li>
+                        <li className="menu__item"><NavLink to="/" onClick={this.clickHandler}>Контакты</NavLink></li>
                     </ul>
                 </div>
             </div>
         </div>
-        </>
-    )
+        )
+    }
 }
 
-export default Menu;
+export default MenuElems;

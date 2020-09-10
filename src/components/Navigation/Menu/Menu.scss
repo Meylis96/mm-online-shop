@@ -1,7 +1,7 @@
 .menu{
     position: absolute;
     width: 350px;
-    height: 100vh;
+    height: 110vh;
     top: 0;
     right: 0;
     overflow: hidden;
@@ -9,7 +9,6 @@
     transition: 0.5s all ease-in-out;
     z-index: 99;
     &__container{
-        position: absolute;
         width: 310px;
         height: 100vh;
         right: 0;

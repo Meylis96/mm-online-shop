@@ -3,7 +3,7 @@ import Button from '../../UI/Button/Button';
 import Input from '../../UI/Input/Input';
 import './HeaderNav.scss';
 import {Burger, BurgerCatalog} from '../Burger/Burger';
-import Menu from '../Menu/Menu';
+import MenuElems from '../Menu/Menu';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Catalog from '../Catalog/Catalog';
 
@@ -41,7 +41,9 @@ class HeaderNav extends Component {
         })
     }
 
-
+    preventScroll = () => {
+        document.body.style = "overflow:hidden"
+    };
 
 
     render() {
@@ -74,10 +76,11 @@ class HeaderNav extends Component {
                         </div>
                     </nav>
                 </div>
-                <Menu isOpen={this.state.openMenu}/>
+                <MenuElems isOpen={this.state.openMenu} onClose={this.burgerCloseHandler}/>
                 <Backdrop isOpen={this.state.openMenu} onClick={this.toggleBurgerHandler}/>
+                
                 <Catalog isOpen={this.state.catalog}/>
-                {this.toggleBurgerHandler ? null : <Catalog/>}
+                {this.state.menu ? this.preventScroll() : document.body.style.overflow = ""}
             </header>
             
             

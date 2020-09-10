@@ -33,4 +33,61 @@
             background: #0443B5;
         }
     }
+    &__slider{
+        width: 140px;
+        height: 50px;
+        border: none;
+        background: none;
+        outline: none;
+        position: relative;
+        margin-top: 50px;
+        transition: 0.3s all ease-in-out;
+        cursor: pointer;
+        padding: 5px;
+        &:hover {
+            a::after{
+                content: '';
+                width: 140px;
+            }
+        }
+        a{
+            text-decoration: none;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+            h1{
+                font-weight: 600;
+                font-size: 18px;
+                line-height: 22px;
+                color: #FFFFFF;
+                margin: 0;
+                padding: 0;
+                margin-right: 6px;
+                text-align: center;
+                z-index: 9;
+            }
+            img{
+                z-index: 9;
+            }
+            &:after{
+                content: '';
+                width: 0px;
+                height: 50px;
+                background: #005BFF;
+                border-radius: 3px;
+                position: absolute;
+                top: 0;
+                left: 0;
+                transition: 0.3s all ease-in-out;
+            }
+            &:hover{
+                &::after{
+                    content: '';
+                    width: 140px;    
+                }
+                
+            }
+        }
+    }
 }

@@ -5,6 +5,11 @@
     transform: translateY(10px);
     transition: 0.3s all;
     height: 400px;
+    position: absolute;
+    top: 84px;
+    left: 0;
+    right: 0;
+    z-index: 9;
     ul{
         margin: 0;
         padding: 0;
