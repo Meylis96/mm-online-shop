@@ -1,9 +1,25 @@
 import React, { Component } from 'react';
 import './Delivery.scss';
 import box from './img/box.jpg';
+import Loader from '../../components/UI/Loader/Loader';
 
 class Delivery extends Component { 
+
+    state = {
+        loader: true
+    }
+
+    componentDidMount(){
+        loaderSpinner().then(() => this.setState({loader: false}));
+    }
+
     render(){
+        const {loader} = this.state;
+
+        if(loader) { 
+            return <Loader/>;
+        }
+
         return(
             <div className="delivery">
                 <div className="container">
@@ -32,5 +48,10 @@ class Delivery extends Component {
         )
     }
 }
+
+function loaderSpinner(){
+    return new Promise((resolve) => setTimeout(() => resolve(), 1500));
+}
+
 
 export default Delivery;

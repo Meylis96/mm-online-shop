@@ -1,9 +1,24 @@
 import React, { Component } from 'react';
 import './About.scss';
 import about from './img/about.jpg';
+import Loader from '../../components/UI/Loader/Loader';
 
 class About extends Component {
+    state = {
+        loader: true
+    }
+    componentDidMount(){
+        loaderSpinner().then(() => this.setState({loader: false}));
+    }
+
     render(){
+
+        const {loader} = this.state;
+
+        if(loader) { 
+            return <Loader/>;
+        }
+
         return(
             <div className="about">
                 <div className="container">
@@ -22,6 +37,10 @@ class About extends Component {
             </div>
         )
     }
+}
+
+function loaderSpinner(){
+    return new Promise((resolve) => setTimeout(() => resolve(), 1500));
 }
 
 export default About;

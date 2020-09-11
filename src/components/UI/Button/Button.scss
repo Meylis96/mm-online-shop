@@ -10,6 +10,7 @@
         padding: 10px;
         cursor: pointer;
         transition: 0.2s all;
+        font-family: Montserrat;
         &:hover{
             background: #0443B5;
         }
@@ -29,6 +30,7 @@
         position: absolute;
         right: 2px;
         transition: 0.2s all;
+        font-family: Montserrat;
         &:hover{
             background: #0443B5;
         }
@@ -44,6 +46,7 @@
         transition: 0.3s all ease-in-out;
         cursor: pointer;
         padding: 5px;
+        font-family: Montserrat;
         &:hover {
             a::after{
                 content: '';
@@ -72,7 +75,7 @@
             }
             &:after{
                 content: '';
-                width: 0px;
+                width: 50px;
                 height: 50px;
                 background: #005BFF;
                 border-radius: 3px;
@@ -88,6 +91,27 @@
                 }
                 
             }
+        }
+    }
+    &__contacts{
+        width: 139px;
+        height: 46px;
+        background: #005BFF;
+        border: 1px solid #005BFF;
+        position: absolute;
+        bottom: 33px;
+        transform: translateX(36%);
+        right: 50%;
+        font-weight: 600;
+        font-size: 18px;
+        line-height: 22px;
+        color: #FFFFFF;
+        padding: 12px 17px;
+        cursor: pointer;
+        transition: 0.3s all;
+        font-family: Montserrat;
+        &:hover{
+            background: #0443B5;
         }
     }
 }

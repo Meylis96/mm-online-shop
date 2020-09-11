@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Carousel from "react-elastic-carousel";
 import './Slider.scss';
 import SliderContent from '../../components/SliderContent/SliderContent';
@@ -6,6 +6,7 @@ import firstSlide from './img/1.jpg';
 import secondSlide from './img/2.jpg';
 import thirdSlide from './img/3.jpg';
 import btnArr from './img/btn_arr.svg';
+import Loader from '../../components/UI/Loader/Loader';
 
 
 let sliderArr = [
@@ -14,7 +15,12 @@ let sliderArr = [
         <SliderContent key="third" btnArr={btnArr} bgImg={thirdSlide} title={'Широкий ассортимент товаров'} subtitle={'Мы предлагаем широкий ассортимент качественных продуктов.'}/>
 ];
 
-const Slider = () => {
+
+function loaderSpinner(){
+  return new Promise((resolve) => setTimeout(() => resolve(), 1500));
+}
+
+const Sliders = () => {
     return (
       <div className="slider">
         <Carousel>
@@ -32,6 +38,27 @@ const Slider = () => {
       </div>
     );
   }
+
+class Slider extends Component{
+      state = {
+        loader: true
+    }
+    componentDidMount(){
+        loaderSpinner().then(() => this.setState({loader: false}));
+    }
+
+    render(){
+      const {loader} = this.state;
+
+      if(loader) { 
+          return <Loader/>;
+      }
+
+      return (
+        Sliders()
+      )
+    }
+}
 
   export default Slider;
 
