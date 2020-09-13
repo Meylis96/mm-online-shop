@@ -15,9 +15,9 @@ const App = () => {
       
       <Switch>
         <Route path="/" component={Slider} exact/>
-        <Route path="/#/about" component={About}/>
-        <Route path="/#/delivery" component={Delivery} />
-        <Route path="/#/contacts" component={Contacts}/>
+        <Route path="/about" component={About}/>
+        <Route path="/delivery" component={Delivery} />
+        <Route path="/contacts" component={Contacts}/>
         <Route render={() => <h1>404 not found</h1>} />
       </Switch>
 

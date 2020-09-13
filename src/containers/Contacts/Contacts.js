@@ -4,6 +4,8 @@ import FormInput from '../../components/UI/Input/FormInputs';
 import TextArea from '../../components/UI/Input/TextArea';
 import Button from '../../components/UI/Button/Button';
 import Loader from '../../components/UI/Loader/Loader';
+import spinner from './spinner.svg';
+
 
 class Contacts extends Component{
 
@@ -13,12 +15,17 @@ class Contacts extends Component{
         phone: '',
         email: '',
         message: '',
-        loading: 'Отправка...'
     }
 
+    submitHandler = (e) => {
 
-    submitHandler = e => {
         e.preventDefault();
+
+        const form = document.querySelector('form');
+    
+        let statusMessage = document.createElement('div');
+        statusMessage.classList.add('status');
+        form.appendChild(statusMessage);
 
         let formData = new FormData();
 
@@ -27,13 +34,30 @@ class Contacts extends Component{
         formData.append("email", this.state.email);
         formData.append("message", this.state.message);
 
-        fetch("mailer/smart.php", {
-            method: "POST",
-            body: formData
-        })
-        .then(res => console.log('Sent'))
-        .catch(e => console.log('Error'))
-        .finally(this.setState({name: '', phone: '', email: '', message: ''}))
+        const messages =  {
+            // loading: spinner,
+            sucess: "Спасибо! Мы скоро свяжемся с Вами.",
+            error: "Произошла ошибка. Повторите чуть позже"
+        }
+
+        const postData = async (url, data) => {
+            // document.querySelector('.status').innerHTML = `<img src="${messages.loading}"></img>`;
+            let res = await fetch(url, {
+                method: "POST",
+                body: data
+            });
+
+            return await res.text();
+        };
+
+        postData("mailer/smart.php", formData)
+        .then(res => statusMessage.innerHTML = messages.sucess)
+        .catch(() => statusMessage.innerHTML = messages.error)
+        .finally(
+            this.setState({name: '', phone: '', email: '', message: ''}),
+            setTimeout(() => {
+            statusMessage.remove();
+        }, 5000))
     }
 
     componentDidMount(){
@@ -47,7 +71,7 @@ class Contacts extends Component{
     };
 
     render(){
-        const {loader, name, email, phone, message} = this.state;
+        const {loader, name, email, phone, message} = this.state
 
         if(loader) { 
             return <Loader/>;
@@ -55,7 +79,7 @@ class Contacts extends Component{
 
         return (
              <div className="contacts">
-            <div className="container">
+                <div className="container">
                 <h1 className="contacts__title">Котакты</h1>
                 <div className="contacts__info">
                     <div className="contacts__wrapper">
@@ -126,6 +150,10 @@ class Contacts extends Component{
                             value={message}
                             name="message"/>
                         </div>
+                        <div className="status">
+
+                        </div>
+                        {this.statusMessage}
 
                         <Button type="contacts" onClick={this.clickBtn}>Отправить</Button>
                     </form>
@@ -139,5 +167,6 @@ class Contacts extends Component{
 function loaderSpinner(){
     return new Promise((resolve) => setTimeout(() => resolve(), 1500));
 }
+
 
 export default Contacts;

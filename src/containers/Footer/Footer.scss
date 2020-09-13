@@ -1,6 +1,107 @@
 .footer{
     background: #005BFF;
-    h1{
-        color: white;
+    min-height: 300px;
+    &__info{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+    &__logo{
+        margin-top: 50px;
+        img{
+            width: 150px;
+        }
+    }
+    &__nav{
+        margin-top: 50px;
+        h1{
+            margin: 0;
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+            color: #FFFFFF;
+            margin-bottom: 15px;
+        }
+        ul{
+            padding: 0;
+            margin: 0;
+            li{
+                list-style: none;
+                margin-bottom: 10px;
+                a{
+                    text-decoration: none;
+                    color: #fff;
+                    font-weight: normal;
+                    font-size: 16px;
+                    line-height: 19px;
+                    transition: 0.3s all ease-in-out;
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                }
+            }
+        }
+    }
+    &__social{
+        margin-top: 50px;
+        h1{
+            font-weight: bold;
+            font-size: 18px;
+            line-height: 21px;
+            color: #FFFFFF;
+            margin: 0;
+            margin-bottom: 15px;
+        }
+    }
+    &__item{
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        img{
+            margin-right: 10px;
+        }
+        a{
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FFFFFF;
+            text-decoration: none;
+            transition: 0.3s all ease-in-out;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
+    }
+    &__end{
+        margin-top: 50px;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 15px;
+        h1{
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FFFFFF;
+            margin: 0;
+        }
+        div > span{
+            font-weight: normal;
+            font-size: 14px;
+            line-height: 16px;
+            color: #FFFFFF;
+        }
+        a{
+            font-weight: normal;
+            font-size: 16px;
+            line-height: 16px;
+            color: #FFFFFF;
+            margin-left: 5px;
+            text-decoration: none;
+            &:hover{
+                text-decoration: underline;
+            }
+        }
     }
 }

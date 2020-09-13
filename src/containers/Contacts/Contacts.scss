@@ -69,6 +69,16 @@
             margin-bottom: 32px;
         }
     }
+    &__response{
+        position: absolute;
+        right: 64%;
+        top: 87%;
+        h1{
+            font-size: 16px;
+            margin: 0;
+            color: #005BFF;
+        }
+    }
     &__form{
         display: flex;
         flex-direction: row;
@@ -76,4 +86,13 @@
     &__text{
         margin-left: 40px;
     }
+}
+
+.status{
+    position: absolute;
+    top: 87%;
+    left: 28%;
+    font-size: 16px;
+    font-weight: 500;
+    color: #005BFF;
 }

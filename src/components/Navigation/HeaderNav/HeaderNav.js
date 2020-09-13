@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Button from '../../UI/Button/Button';
 import Input from '../../UI/Input/Input';
 import './HeaderNav.scss';
+import logo from './logo.svg';
 import {Burger, BurgerCatalog} from '../Burger/Burger';
 import MenuElems from '../Menu/Menu';
 import Backdrop from '../../UI/Backdrop/Backdrop';
@@ -52,7 +53,7 @@ class HeaderNav extends Component {
             <header className="header">
                 <div className="container">
                     <nav>
-                        <h1>LOGO</h1>
+                        <a href="#"><img src={logo} alt="logo"></img></a>
                         <Button 
                             type={'header'}
                             onToggle={this.toggleCatalogHandler}

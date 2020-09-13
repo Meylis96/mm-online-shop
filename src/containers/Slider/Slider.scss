@@ -62,8 +62,16 @@
     }
 }
 
+.slick-slider{
+    width: 100%;
+    position: unset;
+    outline: none;
+}
+.slick-slide{
+    outline: none;
+}
 
-.sc-bdnylx.hCVuYx.rec.rec-arrow.rec.rec-arrow-left, .sc-bdnylx.chowzb.rec.rec-arrow.rec.rec-arrow-left{
+.slick-arrow.slick-prev{
     background: url(img/prev.svg)center no-repeat;
     width: 50px;
     height: 50px;
@@ -78,9 +86,9 @@
     transform: translateY(-50%);
     z-index: 9;
     box-shadow: none;
+    font-size: 0;
 }
-
-.sc-bdnylx.chowzb.rec.rec-arrow.rec.rec-arrow-right, .sc-bdnylx.hCVuYx.rec.rec-arrow.rec.rec-arrow-right{
+.slick-arrow.slick-next{
     background: url(img/next.svg)center no-repeat;
     width: 50px;
     height: 50px;
@@ -92,18 +100,63 @@
     top: 50%;
     transform: translateY(-50%);
     box-shadow: none;
-    button{
-        width: 50px;
-        height: 3px;
-        background: #FFFFFF;
-        transition: 0.3s all ease-in-out;
-        opacity: 0.5;
-        cursor: pointer;
-        outline: none;
-        border-radius: 0;
-        border: none;
-        box-shadow: none;
+    z-index: 9;
+    box-shadow: none;
+    font-size: 0;
+}
+
+ul.slick-dots{
+    position: absolute;
+    width: 200px;
+    right: 50%;
+    margin: 0;
+    margin-top: 0;
+    bottom: 40px;
+    transform: translateX(50%);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    li{
+        list-style: none;
+        position: absolute;
+        &:nth-child(2){
+            margin-left: 75px;
+        }
+        &:nth-child(3){
+            margin-left: 150px;
+        }
+        button{
+            font-size: 0;
+            width: 50px;
+            height: 3px;
+            background: #FFFFFF;
+            transition: 0.3s all ease-in-out;
+            opacity: 0.5;
+            cursor: pointer;
+            outline: none;
+            border: none;
+        }
     }
+    li.slick-active{
+        button{
+            opacity: 1;
+        }
+    }
+}
+
+.cdjYql {
+    width: 50px;
+    height: 3px;
+    background: #FFFFFF;
+    transition: 0.3s all ease-in-out;
+    opacity: 0.5;
+    cursor: pointer;
+    outline: none;
+    border-radius: 0;
+    border: none;
+    box-shadow: none;
 }
 .sc-iCoHVE.kRlYRh.rec.rec-pagination{
     position: absolute;
@@ -132,8 +185,4 @@
 .sc-gKAblj.brcpxa.rec.rec-dot.rec.rec-dot_active{
     border: none;
     opacity: 1;
-}
-
-.sc-dlnjPT.mUZZN.rec.rec-slider-container{
-    margin: 0;
 }

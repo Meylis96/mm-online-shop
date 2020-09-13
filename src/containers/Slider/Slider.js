@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Carousel from "react-elastic-carousel";
+import Slider from "react-slick";
+import "slick-carousel/slick/slick.css"; 
 import './Slider.scss';
 import SliderContent from '../../components/SliderContent/SliderContent';
 import firstSlide from './img/1.jpg';
@@ -23,23 +24,20 @@ function loaderSpinner(){
 const Sliders = () => {
     return (
       <div className="slider">
-        <Carousel>
         {
-                sliderArr.map((item, index)=>{
-                    return (
-                        <div key={index} className="slider__slide">
-                            {item}
-                        </div>
-                        
-                    )
-                })
-            }
-        </Carousel>
+          sliderArr.map((item, index)=>{
+              return (
+                  <div key={index} className="slider__slide">
+                      {item}
+                  </div>
+              )
+          })
+        }
       </div>
     );
   }
 
-class Slider extends Component{
+class Corousel extends Component{
       state = {
         loader: true
     }
@@ -53,14 +51,33 @@ class Slider extends Component{
       if(loader) { 
           return <Loader/>;
       }
+  
+      const settings = {
+        dots: true,
+        infinite: true,
+        speed: 800,
+        slidesToShow: 1,
+        slidesToScroll: 1
+      };
 
       return (
-        Sliders()
+      
+      <div className="slider">
+        <Slider {...settings}>
+          {sliderArr.map((item, index)=>{
+              return (
+                  <div key={index} className="slider__slide">
+                      {item}
+                  </div>
+              )
+          })}
+        </Slider>
+      </div>
       )
     }
 }
 
-  export default Slider;
+  export default Corousel;
 
 
 
