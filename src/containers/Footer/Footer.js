@@ -36,7 +36,7 @@ class Footer extends Component{
                                 <li><NavLink onClick={this.scrollOnClick}  to="/contacts">Контакты</NavLink></li>
                             </ul>
                             <ul>
-                                <li><NavLink onClick={this.scrollOnClick}  to="/">Товары</NavLink></li>
+                                <li><NavLink onClick={this.scrollOnClick}  to="/products">Товары</NavLink></li>
                             </ul>
                         </div>
 

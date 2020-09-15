@@ -4,7 +4,6 @@ import FormInput from '../../components/UI/Input/FormInputs';
 import TextArea from '../../components/UI/Input/TextArea';
 import Button from '../../components/UI/Button/Button';
 import Loader from '../../components/UI/Loader/Loader';
-import spinner from './spinner.svg';
 
 
 class Contacts extends Component{

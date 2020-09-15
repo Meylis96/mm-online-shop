@@ -21,22 +21,6 @@ function loaderSpinner(){
   return new Promise((resolve) => setTimeout(() => resolve(), 1500));
 }
 
-const Sliders = () => {
-    return (
-      <div className="slider">
-        {
-          sliderArr.map((item, index)=>{
-              return (
-                  <div key={index} className="slider__slide">
-                      {item}
-                  </div>
-              )
-          })
-        }
-      </div>
-    );
-  }
-
 class Corousel extends Component{
       state = {
         loader: true

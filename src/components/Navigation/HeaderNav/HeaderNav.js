@@ -7,6 +7,7 @@ import {Burger, BurgerCatalog} from '../Burger/Burger';
 import MenuElems from '../Menu/Menu';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Catalog from '../Catalog/Catalog';
+import {NavLink} from 'react-router-dom';
 
 class HeaderNav extends Component {
 
@@ -53,7 +54,7 @@ class HeaderNav extends Component {
             <header className="header">
                 <div className="container">
                     <nav>
-                        <a href="#"><img src={logo} alt="logo"></img></a>
+                        <NavLink to="/"><img src={logo} alt="logo"></img></NavLink>
                         <Button 
                             type={'header'}
                             onToggle={this.toggleCatalogHandler}
@@ -80,7 +81,7 @@ class HeaderNav extends Component {
                 <MenuElems isOpen={this.state.openMenu} onClose={this.burgerCloseHandler}/>
                 <Backdrop isOpen={this.state.openMenu} onClick={this.toggleBurgerHandler}/>
                 
-                <Catalog isOpen={this.state.catalog}/>
+                <Catalog isOpen={this.state.catalog} />
                 {this.state.menu ? this.preventScroll() : document.body.style.overflow = ""}
             </header>
             
