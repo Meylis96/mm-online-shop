@@ -1,23 +1,23 @@
 import React, { Component } from 'react';
-import ProductsItems from './ProductsItems';
-import Loader from '../UI/Loader/Loader';
+import ProductsItems from '../ProductsItems';
+import Loader from '../../UI/Loader/Loader';
 
 
 function loaderSpinner(){
     return new Promise((resolve) => setTimeout(() => resolve(), 1500));
 }
 
-class Discount extends Component{
+class Sale extends Component{
     state = {
-        name: 'Товары по скидкам',
+        name: 'Товары по акциям',
         descr: 'лучшие цены',
         price: '200TMT',
         loader: true
     };
+
     componentDidMount(){
         loaderSpinner().then(() => this.setState({loader: false}));
     }
-
     render(){
         const {loader} = this.state;
 
@@ -30,4 +30,4 @@ class Discount extends Component{
     }
 };
 
-export default Discount;
+export default Sale;

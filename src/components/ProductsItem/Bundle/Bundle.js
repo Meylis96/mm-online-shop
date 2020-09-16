@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import ProductsItems from './ProductsItems';
-import Loader from '../UI/Loader/Loader';
+import ProductsItems from '../ProductsItems';
+import Loader from '../../UI/Loader/Loader';
 
 
 function loaderSpinner(){

@@ -10,12 +10,12 @@ import Products from './containers/Products/Products';
 import {Switch, Route} from 'react-router-dom';
 import Powder from './components/ProductsItem/Powder/Powder';
 import Soap from './components/ProductsItem/Soap/Soap';
-import Shampoo from './components/ProductsItem/Shampoo';
-import Paper from './components/ProductsItem/Paper';
-import Deodorant from './components/ProductsItem/Deodorant';
-import Sale from './components/ProductsItem/Sale';
-import Discount from './components/ProductsItem/Discount';
-import Bundle from './components/ProductsItem/Bundle';
+import Shampoo from './components/ProductsItem/Shampoo/Shampoo';
+import Paper from './components/ProductsItem/Paper/Paper';
+import Deodorant from './components/ProductsItem/Deodorant/Deodorant';
+import Sale from './components/ProductsItem/Sale/Sale';
+import Discount from './components/ProductsItem/Discount/Discount';
+import Bundle from './components/ProductsItem/Bundle/Bundle';
 
 const App = () => {
   return (
