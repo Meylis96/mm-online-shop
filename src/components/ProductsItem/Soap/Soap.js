@@ -4,6 +4,7 @@ import Loader from '../../UI/Loader/Loader';
 import './Soap.scss';
 import soap from './img/soap.jpg';
 import heart from './img/like.svg';
+import heartRed from './img/liked.svg';
 
 
 function loaderSpinner(){
@@ -19,22 +20,39 @@ class Soap extends Component{
                 img: soap,
                 productName: 'Жидкое мыло турецкое',
                 price: 200,
-                heart: heart
+                heart: heart,
+                qty: 1
             },
             {
                 cls: 'soap',
                 img: soap,
                 productName: 'Жидкое мыло ТМ',
                 price: 200,
-                heart: heart
+                heart: heart,
+                qty: 1
             },
 
         ]
     };
 
+    clickHandler = () => {
+        console.log('Added to cart');
+    }
+
     componentDidMount(){
         loaderSpinner().then(() => this.setState({loader: false}));
     }
+
+    likedBtn = () => {
+        this.setState((prevState) => ({
+            item: prevState.item.map(
+                obj => (obj.heart === heart ? Object.assign(obj, {heart: heartRed}): obj)
+            )
+        }));
+        console.log('liked');
+    }
+
+
     render(){
         const {loader} = this.state;
 
@@ -51,7 +69,7 @@ class Soap extends Component{
                             this.state.item.map((item, index) => {
                                 return (
                                     <div key={index} className="soap__items">
-                                        <ProductsItems cls={item.cls} img={item.img} productName={item.productName} price={item.price} heart={item.heart} />
+                                        <ProductsItems /*input={this.handleChange} qty={item.qty} minus={this.minusItem} plus={this.plusItem}*/ liked={this.likedBtn} addToCart={this.clickHandler} cls={item.cls} img={item.img} productName={item.productName} price={item.price} heart={item.heart} />
                                     </div>
                                 )
                             })
