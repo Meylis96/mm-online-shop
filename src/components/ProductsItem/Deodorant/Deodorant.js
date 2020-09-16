@@ -43,6 +43,14 @@ class Deodorant extends Component{
         loaderSpinner().then(() => this.setState({loader: false}));
     }
 
+    handleClick = index => {
+        this.setState(prevState => prevState.item[index].heart = heartRed)
+    }
+
+    
+
+    /*
+
     likedBtn = () => {
         this.setState((prevState) => ({
             item: prevState.item.map(
@@ -51,12 +59,6 @@ class Deodorant extends Component{
         }));
         console.log('liked');
     }
-
-    // toggleLiked = () => {
-    //     this.state.item
-    // }
-
-    /*
     plusItem = () => {
         let itemsCopy = JSON.parse(JSON.stringify(this.state.item))
         //make changes to ingredients
@@ -102,7 +104,17 @@ class Deodorant extends Component{
                             this.state.item.map((item, index) => {
                                 return (
                                     <div key={index} className="deodorant__items">
-                                        <ProductsItems /*input={this.handleChange} qty={item.qty} minus={this.minusItem} plus={this.plusItem}*/ liked={this.likedBtn} addToCart={this.clickHandler} cls={item.cls} img={item.img} productName={item.productName} price={item.price} heart={item.heart} />
+                                        <ProductsItems 
+                                            /*input={this.handleChange}
+                                            qty={item.qty}
+                                            minus={this.minusItem}
+                                            plus={this.plusItem}*/
+                                            liked={() => this.handleClick(index)}
+                                            addToCart={this.clickHandler}
+                                            cls={item.cls} img={item.img}
+                                            productName={item.productName}
+                                            price={item.price}
+                                            heart={item.heart} />
                                     </div>
                                 )
                             })

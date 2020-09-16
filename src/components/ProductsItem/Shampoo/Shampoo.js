@@ -43,20 +43,25 @@ class Shampoo extends Component{
         loaderSpinner().then(() => this.setState({loader: false}));
     }
 
-    likedBtn = () => {
-        this.setState((prevState) => ({
-            item: prevState.item.map(
-                obj => (obj.heart === heart ? Object.assign(obj, {heart: heartRed}): obj)
-            )
-        }));
-        console.log('liked');
+
+    handleClick = index => {
+        this.setState(prevState => prevState.item[index].heart = heartRed)
     }
 
-    // toggleLiked = () => {
-    //     this.state.item
-    // }
 
     /*
+    likedBtn = () => {
+    this.setState((prevState) => ({
+        item: prevState.item.map(
+            obj => (obj.heart === heart ? Object.assign(obj, {heart: heartRed}): obj)
+        )
+    }));
+    console.log('liked');
+    }
+
+    toggleLiked = () => {
+        this.state.item
+    }
     plusItem = () => {
         let itemsCopy = JSON.parse(JSON.stringify(this.state.item))
         //make changes to ingredients
@@ -102,7 +107,17 @@ class Shampoo extends Component{
                             this.state.item.map((item, index) => {
                                 return (
                                     <div key={index} className="shampoo__items">
-                                        <ProductsItems /*input={this.handleChange} qty={item.qty} minus={this.minusItem} plus={this.plusItem}*/ liked={this.likedBtn} addToCart={this.clickHandler} cls={item.cls} img={item.img} productName={item.productName} price={item.price} heart={item.heart} />
+                                        <ProductsItems 
+                                            /*input={this.handleChange}
+                                            qty={item.qty}
+                                            minus={this.minusItem}
+                                            plus={this.plusItem}*/
+                                            liked={() => this.handleClick(index)}
+                                            cls={item.cls}
+                                            img={item.img}
+                                            productName={item.productName}
+                                            price={item.price}
+                                            heart={item.heart} />
                                     </div>
                                 )
                             })
