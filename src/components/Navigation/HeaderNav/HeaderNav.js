@@ -8,6 +8,7 @@ import MenuElems from '../Menu/Menu';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Catalog from '../Catalog/Catalog';
 import {NavLink} from 'react-router-dom';
+import {connect} from 'react-redux';
 
 class HeaderNav extends Component {
 
@@ -49,6 +50,12 @@ class HeaderNav extends Component {
 
 
     render() {
+
+        this.props.cartUpdated();
+
+        let total = 0;
+        this.props.cart.map(item => total += item.product.price * item.quantity);
+
         return (
             <>
             <header className="header">
@@ -68,8 +75,14 @@ class HeaderNav extends Component {
                         </Button>
                         <Input placeholder={'Искать на сайте...'}/>
                         <div className="header__items">
-                            <div className="header__heart"><div>0</div></div>
-                            <div className="header__cart"><div>0</div></div>
+                            <NavLink to="/liked" className="header__heart"><div>0</div></NavLink>
+                            <NavLink to="/cart" className="header__cart"><div>
+                                {
+                                    this.props.cart.length > 0 ? (
+                                        <span>{ this.props.cart.length }</span>
+                                    ) : 0
+                                }
+                            </div></NavLink>
                         </div>
                         <div className="header__menu">
                             <Burger 
@@ -92,4 +105,12 @@ class HeaderNav extends Component {
     }
 }
 
-export default HeaderNav;
+const mapStateToProps = (state) => {
+ 
+    return {
+        cart: state.cart.cart,
+        cartUpdated: () => { return true }
+    }
+};
+ 
+export default connect(mapStateToProps)(HeaderNav);

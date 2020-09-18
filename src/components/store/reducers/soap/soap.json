@@ -1,0 +1,25 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "title": "Soap TM",
+            "description": "TM",
+            "price": 20,
+            "image": "https://images-na.ssl-images-amazon.com/images/I/712W3qxkUvL._SL1500_.jpg",
+            "amount": 5,
+            "cls": "soap",
+            "productName": "Жидкое мыло 250мл."
+        },
+
+        {
+            "id": 2,
+            "title": "Soap Turkey",
+            "description": "Turkey soap",
+            "price": 20,
+            "image": "/img/soap.jpg",
+            "amount": 5,
+            "cls": "soap",
+            "productName": "Жидкое мыло турецкое 250мл."
+        }
+    ]
+}
