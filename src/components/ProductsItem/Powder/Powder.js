@@ -1,10 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import ProductsItems from '../ProductsItems';
 import Loader from '../../UI/Loader/Loader';
 import './Powder.scss';
-import ariel_12 from './img/ariel_12.jpg';
-import heart from './img/like.svg';
-import heartRed from './img/liked.svg';
+// import soap from './img/soap.jpg';
+// import heart from './img/like.svg';
+// import heartRed from './img/liked.svg';
+import { connect } from 'react-redux';
+import {addToCart} from '../../store/actions/cartActions';
 
 
 function loaderSpinner(){
@@ -14,39 +16,41 @@ function loaderSpinner(){
 
 class Powder extends Component{
     state = {
-        item: [
-            {
-                cls: 'powder',
-                img: ariel_12,
-                productName: 'Стиральный порошок Ariel 1,5 КГ',
-                price: 200,
-                heart: heart,
-                qty: 1
-            },
-            {
-                cls: 'powder',
-                img: ariel_12,
-                productName: 'Стиральный порошок Ariel 1,5 КГ',
-                price: 200,
-                heart: heart,
-                qty: 1
-            },
-        ],
-        loader: true
+        // item: [
+        //     {
+        //         cls: 'soap',
+        //         img: soap,
+        //         productName: 'Жидкое мыло турецкое',
+        //         price: 200,
+        //         heart: heart,
+        //         qty: 1,
+        //         id: 1
+        //     },
+        //     {
+        //         cls: 'soap',
+        //         img: soap,
+        //         productName: 'Жидкое мыло ТМ',
+        //         price: 200,
+        //         heart: heart,
+        //         qty: 1,
+        //         id: 2
+        //     },
+        // ],
+        loader: true,
     };
 
-    clickHandler = () => {
-        console.log('Added to cart');
+
+    addToCart = (product) => {
+        this.props.addToCart(product);
     }
 
     componentDidMount(){
         loaderSpinner().then(() => this.setState({loader: false}));
     }
 
-    handleClick = index => {
-        this.setState(prevState => prevState.item[index].heart = heartRed)
-    }
-
+    // handleClick = id => {
+    //     this.setState(prevState => prevState.item[id].heart = heartRed);
+    // }
 
     /*
     likedBtn = () => {
@@ -56,34 +60,7 @@ class Powder extends Component{
             )
         }));
         console.log('liked');
-    }
-    plusItem = () => {
-        let itemsCopy = JSON.parse(JSON.stringify(this.state.item))
-        //make changes to ingredients
-            itemsCopy[0].qty = itemsCopy[0].qty + 1
-            this.setState({
-                item: itemsCopy
-            })
-        // this.setState(prevState => ({
-        //     item: prevState.item.map(
-        //         obj => (obj.qty === 0 ? Object.assign(obj, {qty: 0 + 1}): obj)
-        //     )
-        // }))
-    }
-
-    minusItem = () => {
-        let itemsCopy = JSON.parse(JSON.stringify(this.state.item))
-            itemsCopy[0].qty = itemsCopy[0].qty - 1
-            this.setState({
-                item: itemsCopy
-            })
-    }
-
-    handleChange = input => e => {
-        this.setState({
-            [input]: e.target.value
-        });
-    };*/
+    } */
 
 
     render(){
@@ -96,33 +73,32 @@ class Powder extends Component{
         return(
             <div className="powder">
                 <div className="container">
-                    <h1 className="powder__title">Порошки</h1>
+                    <h1 className="powder__title">Мыло</h1>
                     <div className="powder__wrapper">
                         {
-                            this.state.item.map((item, index) => {
-                                return (
-                                    <div key={index} className="powder__items">
-                                        <ProductsItems
-                                            /*input={this.handleChange}
-                                            qty={item.qty}
-                                            minus={this.minusItem}
-                                            plus={this.plusItem}*/
-                                            liked={() => {this.handleClick(index)}}
-                                            addToCart={this.clickHandler}
-                                            cls={item.cls}
-                                            img={item.img}
-                                            productName={item.productName}
-                                            price={item.price}
-                                            heart={item.heart} />
-                                    </div>
-                                )
-                            })
+                            this.props.products.map(product => <ProductsItems product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} /> )
                         }
                     </div>
                 </div>
             </div>
-            )
+        )
     }
 }
 
-export default Powder;
+const mapStateToProps = (state) => {
+    return {
+        products: state.powder.products,
+        cart: state.cart.cart
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (product) => {
+            dispatch(addToCart(product));
+        }
+    }
+};
+ 
+ 
+export default connect(mapStateToProps, mapDispatchToProps)(Powder);

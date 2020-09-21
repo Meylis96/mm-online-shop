@@ -2,9 +2,9 @@ import React, { Component} from 'react';
 import ProductsItems from '../ProductsItems';
 import Loader from '../../UI/Loader/Loader';
 import './Soap.scss';
-import soap from './img/soap.jpg';
-import heart from './img/like.svg';
-import heartRed from './img/liked.svg';
+// import soap from './img/soap.jpg';
+// import heart from './img/like.svg';
+// import heartRed from './img/liked.svg';
 import { connect } from 'react-redux';
 import {addToCart} from '../../store/actions/cartActions';
 
@@ -16,26 +16,26 @@ function loaderSpinner(){
 
 class Soap extends Component{
     state = {
-        item: [
-            {
-                cls: 'soap',
-                img: soap,
-                productName: 'Жидкое мыло турецкое',
-                price: 200,
-                heart: heart,
-                qty: 1,
-                id: 1
-            },
-            {
-                cls: 'soap',
-                img: soap,
-                productName: 'Жидкое мыло ТМ',
-                price: 200,
-                heart: heart,
-                qty: 1,
-                id: 2
-            },
-        ],
+        // item: [
+        //     {
+        //         cls: 'soap',
+        //         img: soap,
+        //         productName: 'Жидкое мыло турецкое',
+        //         price: 200,
+        //         heart: heart,
+        //         qty: 1,
+        //         id: 1
+        //     },
+        //     {
+        //         cls: 'soap',
+        //         img: soap,
+        //         productName: 'Жидкое мыло ТМ',
+        //         price: 200,
+        //         heart: heart,
+        //         qty: 1,
+        //         id: 2
+        //     },
+        // ],
         loader: true,
     };
 
@@ -48,9 +48,9 @@ class Soap extends Component{
         loaderSpinner().then(() => this.setState({loader: false}));
     }
 
-    handleClick = id => {
-        this.setState(prevState => prevState.item[id].heart = heartRed);
-    }
+    // handleClick = id => {
+    //     this.setState(prevState => prevState.item[id].heart = heartRed);
+    // }
 
     /*
     likedBtn = () => {

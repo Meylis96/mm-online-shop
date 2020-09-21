@@ -6,7 +6,7 @@
             "description": "TM",
             "price": 20,
             "image": "https://images-na.ssl-images-amazon.com/images/I/712W3qxkUvL._SL1500_.jpg",
-            "amount": 5,
+            "amount": 10,
             "cls": "soap",
             "productName": "Жидкое мыло 250мл."
         },
@@ -20,6 +20,17 @@
             "amount": 5,
             "cls": "soap",
             "productName": "Жидкое мыло турецкое 250мл."
+        },
+
+        {
+            "id": 3,
+            "title": "Soap India",
+            "description": "Indian soap",
+            "price": 20,
+            "image": "/img/soap.jpg",
+            "amount": 5,
+            "cls": "soap",
+            "productName": "Жидкое мыло india 250мл."
         }
     ]
 }

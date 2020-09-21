@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 
 class ProductsDetails extends Component{
     state = {
-        inCart: this.props.inCart
+        inCart: this.props.inCart,
+        liked: this.props.liked
     };
 
     addToCart = e => {
@@ -14,6 +15,19 @@ class ProductsDetails extends Component{
             inCart: true
         })
     }
+
+    addToFav = e => {
+        e.preventDefault();
+
+        this.props.addToFav(this.props.product)
+
+        this.setState({
+            liked: true,
+            inCart: false
+        })
+    }
+
+
 
     render(){
         const {product} = this.props;
@@ -39,7 +53,7 @@ class ProductsDetails extends Component{
                 </div>
                 <div className={product.cls + '__buy'}>
                 <button onClick={this.addToCart}>В корзину</button>
-                    <img className={product.cls + '__like'} src={product.heart} alt="heart" onClick={product.liked}></img>
+                <img className={product.cls + '__like'} src={product.heart} alt="heart" onClick={this.addToFav}></img>
                 </div>
             </div>
         )

@@ -44,12 +44,8 @@ class Cart extends Component{
                         })
                     }
                 </div>
-                <div className="panel-footer">
-                    <div className="row text-center">
-                        <div className="col-xs-11">
-                            <h4 className="text-right">Общая сумма <strong>ТМТ{total.toFixed(3)}</strong></h4>
-                        </div>
-                    </div>
+                <div className="cart__footer">
+                    <h4>Общая сумма {total ? total : '00'}.00 ТМТ</h4>
                 </div>
             </div>
  
@@ -60,24 +56,16 @@ class Cart extends Component{
         )
  
         return (
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-12 col-xs-12">
-                            <div className="panel panel-info">
-                                <div className="panel-heading">
-                                    <div className="panel-title">
-                                        <div className="row">
-                                            <div className="col-xs-6">
-                                                <h1><span className="glyphicon glyphicon-shopping-cart"></span>Корзина</h1>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
- 
-                                { cart }
- 
-                            </div>
+                <div className="cart">
+                    <div className="container">
+                        <h1 className="cart__title">Корзина</h1>
+                        <div className="cart__descr">
+                            <label>Изображение</label>
+                            <label>Наименование</label>
+                            <label>Цена</label>
+                            <label>Кол-во.</label>
                         </div>
+                        { cart }
                     </div>
                 </div>
         )

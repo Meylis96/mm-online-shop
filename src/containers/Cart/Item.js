@@ -1,25 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateCartQuantity, removeFromCart } from '../../components/store/actions/cartActions';
+import './Cart.scss';
  
  
 class Item extends Component {
  
     state = {
         quantity: this.props.item.quantity,
-        btnVisible: false
+        btnVisible: true
     };
  
-    handleChange = (e) => {
+    handleChange = e => {
  
         if(e.target.value <= 0) {
-            alert("Quantity must be greater than or equal to 1");
- 
+            e.target.value = 1;
             return;
         }
  
         if(e.target.value > this.props.item.product.amount) {
-            alert("You have exceeded the available items of this product!");
+            alert("Превышено максимальное колличество товара в наличии");
  
             return;
         }
@@ -27,7 +27,7 @@ class Item extends Component {
         if(this.state.quantity !== e.target.value) {
             this.setState({
                 quantity: e.target.value,
-                btnVisible: true
+                btnVisible: true,
             });
         }
     }
@@ -51,38 +51,32 @@ class Item extends Component {
       const { item } = this.props;
  
       return (
- 
-          <div className="row">
-              <div className="col-xs-2"><img className="img-responsive" src={item.product.image} />
+          <div className="cart__items">
+              <div className="cart__img"><img src={item.product.image} alt={item.product.productNanme}/>
               </div>
-              <div className="col-xs-4">
-                  <h4 className="product-name"><strong>{item.product.title}</strong></h4>
+              <div className="cart__product_name">
+                  <h1>{item.product.title}</h1>
               </div>
-              <div className="col-xs-6">
-                  <div className="col-xs-3 text-right">
-                      <h6><strong>{ item.product.price } <span className="text-muted">x</span></strong></h6>
-                  </div>
+                <div className="cart__product_price">
+                    <h1>{ item.product.price } TMT</h1>
+                </div>
                   <form onSubmit={this.handleSubmit}>
-                      <div className="col-xs-4">
-                          <label>Количество</label>
-                          <input type="number" className="form-control input-sm" onChange={this.handleChange} value={this.state.quantity}/>
+                      <div className="cart__qty">
+                          <input placeholder="1" type="number" min="1" className="form-control input-sm" onChange={this.handleChange} value={this.state.quantity} required/>
                       </div>
  
                       {
                           this.state.btnVisible?(
-                              <div className="col-xs-2">
-                                  <button type="submit" className="btn btn-info">Добавить</button>
+                              <div className="cart__add">
+                                  <button type="submit"></button>
                               </div>
                           ) : null
                       }
  
-                      <div className="col-xs-2">
-                          <button type="button" onClick={this.handleRemove} className="btn btn-link btn-xs">
-                              <span className="glyphicon glyphicon-trash">Удалить</span>
-                          </button>
+                      <div className="cart__delete">
+                          <button type="button" onClick={this.handleRemove}></button>
                       </div>
                   </form>
-              </div>
           </div>
       )
   }

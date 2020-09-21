@@ -48,6 +48,9 @@
     &__items{
         margin-left: 30px;
         display: flex;
+        div span{
+            background: none;
+        }
     }
     &__heart{
         width: 30px;
