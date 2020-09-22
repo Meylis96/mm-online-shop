@@ -52,9 +52,11 @@ class HeaderNav extends Component {
     render() {
 
         this.props.cartUpdated();
+        this.props.likeUpdated();
 
         let total = 0;
         this.props.cart.map(item => total += item.product.price * item.quantity);
+        this.props.like.map(item => total += item.product.price * item.quantity);
 
         return (
             <>
@@ -75,7 +77,13 @@ class HeaderNav extends Component {
                         </Button>
                         <Input placeholder={'Искать на сайте...'}/>
                         <div className="header__items">
-                            <NavLink to="/liked" className="header__heart"><div>0</div></NavLink>
+                            <NavLink to="/liked" className="header__heart"><div>
+                                {
+                                    this.props.like.length > 0 ? (
+                                        <span>{ this.props.like.length }</span>
+                                    ) : 0
+                                }
+                                </div></NavLink>
                             <NavLink to="/cart" className="header__cart"><div>
                                 {
                                     this.props.cart.length > 0 ? (
@@ -106,10 +114,11 @@ class HeaderNav extends Component {
 }
 
 const mapStateToProps = (state) => {
- 
     return {
         cart: state.cart.cart,
-        cartUpdated: () => { return true }
+        cartUpdated: () => { return true },
+        like: state.like.like,
+        likeUpdated: () => {return true}
     }
 };
  

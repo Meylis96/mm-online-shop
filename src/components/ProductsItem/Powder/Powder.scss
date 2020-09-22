@@ -13,6 +13,8 @@
         flex-direction: row;
         min-height: 100vh;
         padding-left: 20px;
+        flex-wrap: wrap;
+        margin-bottom: 20px;
     }
     &__item{
         width: 180px;
@@ -26,6 +28,7 @@
         padding: 10px;
         transition: 0.3s all ease-in-out;
         margin-right: 50px;
+        margin-bottom: 20px;
         &:hover{
             border: 1px solid #005BFF;
             box-shadow: 0px 2px 4px #005BFF;
@@ -109,6 +112,11 @@
         }
         img{
             cursor: pointer;
+        }
+    }
+    &__like{
+        &::focus{
+            background: red;
         }
     }
 }

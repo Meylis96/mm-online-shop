@@ -1,4 +1,8 @@
 .cart{
+    min-height: 100vh;
+    &__modal{
+        display: none;
+    }
     &__title{
         font-weight: 800;
         font-size: 24px;
@@ -97,4 +101,31 @@
             cursor: pointer;
         }
     }
+    &__footer{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-bottom: 20px;
+        align-items: center;
+        button{
+            height: 40px;
+            width: 150px;
+            background: #005BFF;
+            border-radius: 5px;
+            cursor: pointer;
+            outline: none;
+            font-weight: 500;
+            font-size: 12px;
+            line-height: 14px;
+            color: #FFFFFF;
+            border: none;
+            font-family: Montserrat;
+            &:active{
+                border: 1px solid white;
+            }
+        }
+    }
+    button:disabled {
+        background: #dddddd;
+      }
 }

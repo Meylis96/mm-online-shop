@@ -3,7 +3,7 @@ export const loadState = () => {
             const serializedState = localStorage.getItem('state');
             setTimeout(() => {
                 localStorage.clear()
-            }, 6250 * 24 * 24)
+            }, 3600 * 1000)
             if(serializedState === null) {
                 return undefined;
             }

@@ -76,6 +76,7 @@ class Item extends Component {
                       <div className="cart__delete">
                           <button type="button" onClick={this.handleRemove}></button>
                       </div>
+
                   </form>
           </div>
       )

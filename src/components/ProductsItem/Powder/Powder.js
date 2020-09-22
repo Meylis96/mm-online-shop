@@ -7,6 +7,7 @@ import './Powder.scss';
 // import heartRed from './img/liked.svg';
 import { connect } from 'react-redux';
 import {addToCart} from '../../store/actions/cartActions';
+import {addToFav} from '../../store/actions/likeActions';
 
 
 function loaderSpinner(){
@@ -44,6 +45,11 @@ class Powder extends Component{
         this.props.addToCart(product);
     }
 
+    addToFav = (product) => {
+        this.props.addToFav(product);
+        console.log('added to fav')
+    }
+
     componentDidMount(){
         loaderSpinner().then(() => this.setState({loader: false}));
     }
@@ -76,7 +82,7 @@ class Powder extends Component{
                     <h1 className="powder__title">Мыло</h1>
                     <div className="powder__wrapper">
                         {
-                            this.props.products.map(product => <ProductsItems product={product} addToCart={this.addToCart} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } key={product.id} /> )
+                            this.props.products.map(product => <ProductsItems product={product} addToCart={this.addToCart} addToFav={this.addToFav} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } like={this.props.like.length > 0 && this.props.like.filter(e => e.product.id === product.id).length > 0 }  key={product.id} /> )
                         }
                     </div>
                 </div>
@@ -88,7 +94,8 @@ class Powder extends Component{
 const mapStateToProps = (state) => {
     return {
         products: state.powder.products,
-        cart: state.cart.cart
+        cart: state.cart.cart,
+        like: state.like.like
     }
 };
 
@@ -96,6 +103,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         addToCart: (product) => {
             dispatch(addToCart(product));
+        },
+        addToFav: (product) => {
+            dispatch(addToFav(product));
         }
     }
 };

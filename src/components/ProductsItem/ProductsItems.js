@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
+import liked from './liked.svg';
 
 class ProductsDetails extends Component{
     state = {
         inCart: this.props.inCart,
-        liked: this.props.liked
+        like: this.props.like
     };
 
     addToCart = e => {
@@ -18,12 +19,10 @@ class ProductsDetails extends Component{
 
     addToFav = e => {
         e.preventDefault();
-
-        this.props.addToFav(this.props.product)
+        this.props.addToFav(this.props.product);
 
         this.setState({
-            liked: true,
-            inCart: false
+            like: true
         })
     }
 
@@ -53,7 +52,7 @@ class ProductsDetails extends Component{
                 </div>
                 <div className={product.cls + '__buy'}>
                 <button onClick={this.addToCart}>В корзину</button>
-                <img className={product.cls + '__like'} src={product.heart} alt="heart" onClick={this.addToFav}></img>
+                <img className={product.cls + '__like'} src={this.state.like ? liked : product.heart} alt="heart" onClick={this.addToFav}></img>
                 </div>
             </div>
         )

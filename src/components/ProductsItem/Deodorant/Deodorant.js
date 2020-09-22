@@ -1,10 +1,13 @@
-import React, { Component } from 'react';
+import React, { Component} from 'react';
 import ProductsItems from '../ProductsItems';
 import Loader from '../../UI/Loader/Loader';
 import './Deodorant.scss';
-import nivea from './img/deodorant.jpg';
-import heart from './img/like.svg';
-import heartRed from './img/liked.svg';
+// import soap from './img/soap.jpg';
+// import heart from './img/like.svg';
+// import heartRed from './img/liked.svg';
+import { connect } from 'react-redux';
+import {addToCart} from '../../store/actions/cartActions';
+import {addToFav} from '../../store/actions/likeActions';
 
 
 function loaderSpinner(){
@@ -14,43 +17,47 @@ function loaderSpinner(){
 
 class Deodorant extends Component{
     state = {
-        item: [
-            {
-                cls: 'deodorant',
-                img: nivea,
-                productName: 'Дезодорант Nivea',
-                price: 200,
-                heart: heart,
-                qty: 1
-            },
-            {
-                cls: 'deodorant',
-                img: nivea,
-                productName: 'Дезодорант Nivea',
-                price: 200,
-                heart: heart,
-                qty: 1
-            },
-        ],
-        loader: true
+        // item: [
+        //     {
+        //         cls: 'soap',
+        //         img: soap,
+        //         productName: 'Жидкое мыло турецкое',
+        //         price: 200,
+        //         heart: heart,
+        //         qty: 1,
+        //         id: 1
+        //     },
+        //     {
+        //         cls: 'soap',
+        //         img: soap,
+        //         productName: 'Жидкое мыло ТМ',
+        //         price: 200,
+        //         heart: heart,
+        //         qty: 1,
+        //         id: 2
+        //     },
+        // ],
+        loader: true,
     };
 
-    clickHandler = () => {
-        console.log('Added to cart');
+
+    addToCart = (product) => {
+        this.props.addToCart(product);
+    }
+
+    addToFav = (product) => {
+        this.props.addToFav(product);
     }
 
     componentDidMount(){
         loaderSpinner().then(() => this.setState({loader: false}));
     }
 
-    handleClick = index => {
-        this.setState(prevState => prevState.item[index].heart = heartRed)
-    }
-
-    
+    // handleClick = id => {
+    //     this.setState(prevState => prevState.item[id].heart = heartRed);
+    // }
 
     /*
-
     likedBtn = () => {
         this.setState((prevState) => ({
             item: prevState.item.map(
@@ -58,34 +65,7 @@ class Deodorant extends Component{
             )
         }));
         console.log('liked');
-    }
-    plusItem = () => {
-        let itemsCopy = JSON.parse(JSON.stringify(this.state.item))
-        //make changes to ingredients
-            itemsCopy[0].qty = itemsCopy[0].qty + 1
-            this.setState({
-                item: itemsCopy
-            })
-        // this.setState(prevState => ({
-        //     item: prevState.item.map(
-        //         obj => (obj.qty === 0 ? Object.assign(obj, {qty: 0 + 1}): obj)
-        //     )
-        // }))
-    }
-
-    minusItem = () => {
-        let itemsCopy = JSON.parse(JSON.stringify(this.state.item))
-            itemsCopy[0].qty = itemsCopy[0].qty - 1
-            this.setState({
-                item: itemsCopy
-            })
-    }
-
-    handleChange = input => e => {
-        this.setState({
-            [input]: e.target.value
-        });
-    };*/
+    } */
 
 
     render(){
@@ -98,32 +78,36 @@ class Deodorant extends Component{
         return(
             <div className="deodorant">
                 <div className="container">
-                    <h1 className="deodorant__title">Дезодоранты</h1>
+                    <h1 className="deodorant__title">Мыло</h1>
                     <div className="deodorant__wrapper">
                         {
-                            this.state.item.map((item, index) => {
-                                return (
-                                    <div key={index} className="deodorant__items">
-                                        <ProductsItems 
-                                            /*input={this.handleChange}
-                                            qty={item.qty}
-                                            minus={this.minusItem}
-                                            plus={this.plusItem}*/
-                                            liked={() => this.handleClick(index)}
-                                            addToCart={this.clickHandler}
-                                            cls={item.cls} img={item.img}
-                                            productName={item.productName}
-                                            price={item.price}
-                                            heart={item.heart} />
-                                    </div>
-                                )
-                            })
+                            this.props.products.map(product => <ProductsItems product={product} addToCart={this.addToCart} addToFav={this.addToFav} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } like={this.props.like.length > 0 && this.props.like.filter(e => e.product.id === product.id).length > 0 }  key={product.id} /> )
                         }
                     </div>
                 </div>
             </div>
-            )
+        )
     }
 }
 
-export default Deodorant;
+const mapStateToProps = (state) => {
+    return {
+        products: state.deodorant.products,
+        cart: state.cart.cart,
+        like: state.like.like
+    }
+};
+
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addToCart: (product) => {
+            dispatch(addToCart(product));
+        },
+        addToFav: (product) => {
+            dispatch(addToFav(product));
+        }
+    }
+};
+ 
+ 
+export default connect(mapStateToProps, mapDispatchToProps)(Deodorant);
