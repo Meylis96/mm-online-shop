@@ -147,7 +147,8 @@ class Contacts extends Component{
                             placeholder="Ваше сообщение..."
                             onChange={this.handleChange('message')}
                             value={message}
-                            name="message"/>
+                            name="message"
+                            required/>
                         </div>
                         <div className="status">
 
