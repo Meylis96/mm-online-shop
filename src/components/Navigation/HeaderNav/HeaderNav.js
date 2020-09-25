@@ -15,7 +15,13 @@ class HeaderNav extends Component {
     state = {
         menu: false,
         catalog: false,
-        openMenu: false
+        openMenu: false,
+        soap: this.props.soap,
+        search: ''
+    }
+
+    componentDidMount(){
+        console.log(this.state.soap);
     }
 
     toggleBurgerHandler = () => {
@@ -48,15 +54,21 @@ class HeaderNav extends Component {
         document.body.style = "overflow:hidden"
     };
 
+    searchProductHandler = e => {
+        console.log(e.target.value);
+        console.log(this.props.onFindSoap(this.setState({search: e.target.value})));
+    }
+
 
     render() {
+
 
         this.props.cartUpdated();
         this.props.likeUpdated();
 
         let total = 0;
         this.props.cart.map(item => total += item.product.price * item.quantity);
-        this.props.like.map(item => total += item.product.price * item.quantity);
+        // this.props.like.map(item => total += item.product.price * item.quantity);
 
         return (
             <>
@@ -75,7 +87,7 @@ class HeaderNav extends Component {
                                 isOpen={this.state.catalog}/>
                             </div>
                         </Button>
-                        <Input placeholder={'Искать на сайте...'}/>
+                        <Input placeholder={'Искать на сайте...'} onChange={this.searchProductHandler} />
                         <div className="header__items">
                             <NavLink to="/liked" className="header__heart"><div>
                                 {
@@ -105,9 +117,6 @@ class HeaderNav extends Component {
                 <Catalog isOpen={this.state.catalog} />
                 {this.state.menu ? this.preventScroll() : document.body.style.overflow = ""}
             </header>
-            
-            
-            
             </>
         )
     }
@@ -118,8 +127,11 @@ const mapStateToProps = (state) => {
         cart: state.cart.cart,
         cartUpdated: () => { return true },
         like: state.like.like,
-        likeUpdated: () => {return true}
+        likeUpdated: () => {return true},
+        soap: state.soap,
     }
 };
+
+
  
 export default connect(mapStateToProps)(HeaderNav);

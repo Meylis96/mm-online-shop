@@ -12,7 +12,7 @@ import { throttle } from 'lodash';
 const persistedState = loadState();
 const store = createStore(
   rootReducer,
-  persistedState
+  persistedState,
 );
 
 // store.subscribe(() => {

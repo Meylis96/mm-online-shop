@@ -58,6 +58,10 @@
             color: #000000;
             margin-bottom: 32px;
         }
+    }
+    &__inputs{
+        display: flex;
+        flex-direction: column;
         input{
             width: 285px;
             height: 46px;
@@ -67,6 +71,9 @@
             margin: 0;
             margin-left: 0;
             margin-bottom: 32px;
+            font-family: Montserrat;
+            padding-left: 10px;
+            outline: none;
         }
     }
     &__response{
@@ -82,9 +89,51 @@
     &__form{
         display: flex;
         flex-direction: row;
+        textarea{
+            width: 456px;
+            height: 108px;
+            background: #FFFFFF;
+            border: 1px solid #005BFF;
+            border-radius: 3px;
+            resize: none;
+            outline: none;
+            padding-top: 12px;
+            font-family: Montserrat;
+            padding-left: 10px;
+            font-style: normal;
+            font-weight: 500;
+            font-size: 16px;
+            line-height: 22px;
+        }
+        button{
+            width: 139px;
+            height: 46px;
+            background: #005BFF;
+            border: 1px solid #005BFF;
+            position: absolute;
+            bottom: 33px;
+            transform: translateX(36%);
+            right: 50%;
+            font-weight: 600;
+            font-size: 18px;
+            line-height: 22px;
+            color: #FFFFFF;
+            padding: 12px 17px;
+            cursor: pointer;
+            transition: 0.3s all;
+            font-family: Montserrat;
+            outline: none;
+            &:hover{
+                background: #0443B5;
+            }
+        }
     }
     &__text{
         margin-left: 40px;
+    }
+    button:disabled {
+        background: #dddddd;
+        border: none;
     }
 }
 

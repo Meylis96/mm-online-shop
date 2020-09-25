@@ -100,10 +100,12 @@ class Cart extends Component{
             this.setState({name: '', phone: '', address: '', items: ''}),
             setTimeout(() => {
             statusMessage.remove();
-            this.setState({show: false})
+            this.setState({show: false});
+            localStorage.clear();
         }, 5000))
 
     }
+
 
     handleChange = input => e => {
         this.setState({

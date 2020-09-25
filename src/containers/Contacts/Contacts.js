@@ -1,8 +1,5 @@
 import React, { Component } from 'react';
 import './Contacts.scss';
-import FormInput from '../../components/UI/Input/FormInputs';
-import TextArea from '../../components/UI/Input/TextArea';
-import Button from '../../components/UI/Button/Button';
 import Loader from '../../components/UI/Loader/Loader';
 
 
@@ -40,7 +37,7 @@ class Contacts extends Component{
         }
 
         const postData = async (url, data) => {
-            // document.querySelector('.status').innerHTML = `<img src="${messages.loading}"></img>`;
+            // document.querySelector('.status').innerHTML = `Loading...`;
             let res = await fetch(url, {
                 method: "POST",
                 body: data
@@ -112,7 +109,7 @@ class Contacts extends Component{
 
                     <form onSubmit={this.submitHandler} className="contacts__form">
                         <div className="contacts__inputs">
-                            <FormInput 
+                            <input 
                             type="text"
                             id="inputIndex"
                             placeholder="Ваше имя..."
@@ -121,7 +118,7 @@ class Contacts extends Component{
                             onChange={this.handleChange('name')}
                             required/>
 
-                            <FormInput 
+                            <input 
                             type="tel"
                             id="inputIndex"
                             placeholder="Ваш номер..."
@@ -130,7 +127,7 @@ class Contacts extends Component{
                             onChange={this.handleChange('phone')}
                             name="phone"/>
 
-                            <FormInput 
+                            <input 
                             type="email"
                             id="inputIndex"
                             placeholder="Ваша почта..."
@@ -141,7 +138,7 @@ class Contacts extends Component{
                         </div>
                         
                         <div className="contacts__text">
-                            <TextArea 
+                            <textarea 
                             type="text"
                             id="inputIndex"
                             placeholder="Ваше сообщение..."
@@ -153,9 +150,8 @@ class Contacts extends Component{
                         <div className="status">
 
                         </div>
-                        {this.statusMessage}
 
-                        <Button type="contacts" onClick={this.clickBtn}>Отправить</Button>
+                        <button type="contacts" disabled={!message && !name && !phone && !email} onClick={this.clickBtn}>Отправить</button>
                     </form>
                 </div>
             </div>

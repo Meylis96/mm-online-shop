@@ -93,5 +93,6 @@ const initialState = {
   const soapReducer = (state = initialState, action) => {
     return state;
   };
+
   
   export default soapReducer;
