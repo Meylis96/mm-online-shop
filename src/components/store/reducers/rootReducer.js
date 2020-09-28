@@ -6,10 +6,11 @@ import paperReducer from './paper/paperReducer';
 import deodorantReducer from './deodorant/deodorantReducer';
 import cartReducer from './cartReducer';
 import likeReducer from './likeReducer';
+import searchReducer from './searchReducer';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-    product: productReducer,
+    bestsellers: productReducer,
     soap: soapReducer,
     cart: cartReducer,
     like: likeReducer,
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
     shampoo: shampooReducer,
     paper: paperReducer,
     deodorant: deodorantReducer,
+    search: searchReducer
 });
 
 export default rootReducer;

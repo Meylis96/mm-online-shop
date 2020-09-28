@@ -10,18 +10,21 @@ import Catalog from '../Catalog/Catalog';
 import {NavLink} from 'react-router-dom';
 import {connect} from 'react-redux';
 
+
 class HeaderNav extends Component {
 
     state = {
         menu: false,
         catalog: false,
         openMenu: false,
-        soap: this.props.soap,
-        search: ''
+        soap: this.props.soap.products.map(item => {return item.title}),
+        search: '',
+        cart: this.props.cart.map(item => {return item.title})
     }
 
     componentDidMount(){
-        console.log(this.state.soap);
+        // console.log(this.state.soap);
+        // console.log(this.props.cart);
     }
 
     toggleBurgerHandler = () => {
@@ -55,20 +58,19 @@ class HeaderNav extends Component {
     };
 
     searchProductHandler = e => {
-        console.log(e.target.value);
-        console.log(this.props.onFindSoap(this.setState({search: e.target.value})));
+        console.log(e.target.value)
     }
 
 
     render() {
 
+        const {value} = this.props;
 
         this.props.cartUpdated();
         this.props.likeUpdated();
 
         let total = 0;
         this.props.cart.map(item => total += item.product.price * item.quantity);
-        // this.props.like.map(item => total += item.product.price * item.quantity);
 
         return (
             <>
@@ -87,7 +89,8 @@ class HeaderNav extends Component {
                                 isOpen={this.state.catalog}/>
                             </div>
                         </Button>
-                        <Input placeholder={'Искать на сайте...'} onChange={this.searchProductHandler} />
+                        <Input placeholder={'Искать на сайте...'} onChange={this.searchProductHandler}
+                            value={value} />
                         <div className="header__items">
                             <NavLink to="/liked" className="header__heart"><div>
                                 {
@@ -129,6 +132,7 @@ const mapStateToProps = (state) => {
         like: state.like.like,
         likeUpdated: () => {return true},
         soap: state.soap,
+        search: state.search
     }
 };
 

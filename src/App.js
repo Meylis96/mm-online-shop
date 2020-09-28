@@ -18,15 +18,16 @@ import Discount from './components/ProductsItem/Discount/Discount';
 import Bundle from './components/ProductsItem/Bundle/Bundle';
 import Cart from './containers/Cart/Cart';
 import Liked from './containers/Liked/Liked';
+import Bestsellers from './components/ProductsItem/Bestsellers/Bestsellers';
 
 const App = () => {
   return (
-
       <div className="App">
            <BrowserRouter>
           <Header/>
             <Switch>
               <Route path="/" component={Slider} exact/>
+              
               <Route path="/about" component={About}/>
               <Route path="/delivery" component={Delivery}/>
               <Route path="/contacts" component={Contacts}/>
@@ -44,10 +45,10 @@ const App = () => {
               <Route render={() => <h1>404 not found</h1>}/>
               {/* <Redirect to={'/'} /> */}
             </Switch>
+            <Route path="/" component={Bestsellers} exact/>
           <Footer/>
           </BrowserRouter>
       </div>
-    
   );
 }
 

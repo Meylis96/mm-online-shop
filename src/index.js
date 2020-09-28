@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import './index.css';
+import './media.scss';
 import * as serviceWorker from './serviceWorker';
 import rootReducer from './components/store/reducers/rootReducer';
 import {Provider} from 'react-redux';

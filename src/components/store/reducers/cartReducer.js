@@ -42,4 +42,4 @@ const initialState = {
       }
   };
    
-  export default cartReducer;
+export default cartReducer;

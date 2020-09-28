@@ -38,7 +38,6 @@ class Cart extends Component{
     }
 
     componentWillUpdate(){
-        console.log(this.state.totalPrice)
     }
 
 
@@ -175,7 +174,7 @@ class Cart extends Component{
                             <input onChange={this.handleChange('address')} type="text" value={this.state.address} placeholder="Ваш адрес" required name="address" />
                         </div>
                         <div className="modal__descr">
-                            <p>Общая сумма: {total} TMT</p>
+                            <p>Общая сумма: {total}.00 TMT</p>
                             <button className="modal__send">Отправить</button>
                         </div>
                     </form>
