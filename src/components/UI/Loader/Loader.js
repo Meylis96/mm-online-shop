@@ -3,10 +3,13 @@ import './Loader.scss';
 
 const Loader = props => {
     return (
-        <div className="center">
+        <div className="container">
+            <div className="center">
             <div className="loader">
-        <div/><div/>
-    </div></div>
+                <div/><div/>
+            </div>
+            </div>
+            </div>
         
     )
 }

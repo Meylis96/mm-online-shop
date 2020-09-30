@@ -29,7 +29,7 @@ class Cart extends Component{
         totalPrice: 0,
         cart: this.props.cart,
         qty: this.props.cart.map((item) => {
-            return item.quantity;
+            return item.product.quantity;
         })
     }
 
