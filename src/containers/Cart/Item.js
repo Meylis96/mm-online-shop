@@ -84,7 +84,6 @@ class Item extends Component {
 }
  
 const mapDispatchToProps = (dispatch) => {
- 
     return {
         updateCartQuantity: (productId, quantity) => dispatch(updateCartQuantity(productId, quantity)),
         removeFromCart: (productId) => dispatch(removeFromCart(productId))

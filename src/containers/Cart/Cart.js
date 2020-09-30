@@ -24,12 +24,12 @@ class Cart extends Component{
             return item.product.title;
         }),
         productPrice: this.props.cart.map((item) => {
-            return item.product.price;
+            return JSON.stringify(item.product.price);
         }),
         totalPrice: 0,
         cart: this.props.cart,
         qty: this.props.cart.map((item) => {
-            return item.product.quantity;
+            return item.quantity;
         })
     }
 
@@ -38,6 +38,8 @@ class Cart extends Component{
     }
 
     componentWillUpdate(){
+        console.log(this.state.productPrice);
+        console.log(this.state.qty);
     }
 
 
@@ -49,6 +51,7 @@ class Cart extends Component{
     
     hideModal = () => {
         this.setState({ show: false });
+        console.log(this.state.qty);
     };
 
     preventScroll = () => {
@@ -72,8 +75,7 @@ class Cart extends Component{
         formData.append("address", this.state.address);
         formData.append("itemName", this.state.itemName);
         formData.append("totalPrice", this.state.totalPrice);
-        formData.append("cart", this.state.cart);
-        formData.append("qty", this.state.qty);
+        formData.append("quantity", this.state.qty);
         formData.append("price", this.state.productPrice);
 
         const messages =  {
