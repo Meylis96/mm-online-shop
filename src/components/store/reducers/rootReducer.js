@@ -1,4 +1,4 @@
-import productReducer from './productReducer';
+import bestsellersReducer from './bestsellers/bestsellersReducer';
 import soapReducer from './soap/soapReducer';
 import powderReducer from './powder/powderReducer';
 import shampooReducer from './shampoo/shampooReducer';
@@ -10,7 +10,7 @@ import searchReducer from './searchReducer';
 import { combineReducers } from 'redux';
 
 const rootReducer = combineReducers({
-    bestsellers: productReducer,
+    bestsellers: bestsellersReducer,
     soap: soapReducer,
     cart: cartReducer,
     like: likeReducer,

@@ -1,7 +1,7 @@
 import {v4} from 'node-uuid';
 // const initialState = require('./products/soap.json');
-import soap from './soap/img/soap.jpg';
-import like from './soap/img/like.svg';
+import soap from '../soap/img/soap.jpg';
+import like from '../soap/img/like.svg';
 const initialState = {
   products: [
     {
@@ -90,9 +90,9 @@ const initialState = {
   ]
 }
   
-  const productReducer = (state = initialState, action) => {
+  const bestsellersReducer = (state = initialState, action) => {
     return state;
   };
 
   
-  export default productReducer;
+  export default bestsellersReducer;

@@ -79,7 +79,7 @@ class Powder extends Component{
         return(
             <div className="powder">
                 <div className="container">
-                    <h1 className="powder__title">Мыло</h1>
+                    <h1 className="powder__title">Порошки</h1>
                     <div className="powder__wrapper">
                         {
                             this.props.products.map(product => <ProductsItems product={product} addToCart={this.addToCart} addToFav={this.addToFav} inCart={this.props.cart.length>0 && this.props.cart.filter(e => e.product.id === product.id).length > 0 } like={this.props.like.length > 0 && this.props.like.filter(e => e.product.id === product.id).length > 0 }  key={product.id} /> )
